@@ -2,6 +2,8 @@ package com.app.entity;
 
 import java.time.LocalDate;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -10,10 +12,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Data
 public class LoanEnquiry {
 	
 	@Id
@@ -26,7 +29,17 @@ public class LoanEnquiry {
 	private String customerPermanentAddress;
 	private String customerCity;
 	private Integer customerPincode;
+	
+	@CreationTimestamp
 	private LocalDate enquiryDateTime;
 
+	
+//	"customerName" : "aaaaaj",
+//	"customerContactNumber" : 99989889,
+//	"customerAlternateNumber" :789709089,
+//	"customerEmailId" : "gmail.com",
+//	"customerPermanentAddress" : "pune",
+//	"customerCity" : "pune",
+//	"customerPincode" : 12833
 	
 }

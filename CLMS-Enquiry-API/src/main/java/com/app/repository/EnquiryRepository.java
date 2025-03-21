@@ -6,4 +6,5 @@ import com.app.entity.LoanEnquiry;
 
 public interface EnquiryRepository extends JpaRepository<LoanEnquiry, Integer> {
 
+
 }

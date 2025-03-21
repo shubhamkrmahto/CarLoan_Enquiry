@@ -12,20 +12,27 @@ import com.app.service.EnquiryService;
 
 @Service
 public class EnquiryServiceImpl implements EnquiryService{
-	
+
+
 	@Autowired
-	EnquiryRepository repo;
-	
+	private EnquiryRepository enquiryRepository;
+
 	@Autowired
 	JavaMailSender mailSender;
 	
 	@Value("${spring.mail.username}")
 	private String from;  
 	
+	
+	@Override
+	public void deleteEnquiryField(Integer id) { 
+		enquiryRepository.deleteById(id);		
+	}
+	
 
 	@Override
 	public String saveEnquiry(LoanEnquiry enquiry) {
-		repo.save(enquiry);
+		enquiryRepository.save(enquiry);
 		
 		
 		SimpleMailMessage mail= new SimpleMailMessage();
@@ -37,8 +44,7 @@ public class EnquiryServiceImpl implements EnquiryService{
 		
 		mailSender.send(mail);
 		return "Enquiry registered";
-		
-		
+				
 	}
 
 }

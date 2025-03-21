@@ -20,7 +20,8 @@ public class EnquiryServiceImpl implements EnquiryService{
 	JavaMailSender mailSender;
 	
 	@Value("${spring.mail.username}")
-	private String from;
+	private String from;  
+	
 
 	@Override
 	public String saveEnquiry(LoanEnquiry enquiry) {

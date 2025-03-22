@@ -34,4 +34,7 @@ public class LoanEnquiry {
 	private LocalDate enquiryDateTime;
 
 	
+	
+	
+	
 }

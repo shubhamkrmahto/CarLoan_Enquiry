@@ -1,5 +1,8 @@
 package com.app.serviceimpl;
 
+import java.time.LocalDate;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -39,6 +42,24 @@ public class EnquiryServiceImpl implements EnquiryService{
 		return "Enquiry registered";
 		
 		
+	}
+
+
+	@Override
+	public Optional<LoanEnquiry> findByEnquiryId(int enquiryId, LoanEnquiry loanEnquiry) {
+		Optional<LoanEnquiry> loan = repo.findById(enquiryId);
+		LoanEnquiry loanData = loan.get();
+		loanData.setCustomerName(loanEnquiry.getCustomerName());
+		loanData.setCustomerContactNumber(loanEnquiry.getCustomerContactNumber());
+		loanData.setCustomerAlternateNumber(loanEnquiry.getCustomerAlternateNumber());
+		loanData.setCustomerEmailId(loanEnquiry.getCustomerEmailId());
+		loanData.setCustomerPermanentAddress(loanEnquiry.getCustomerPermanentAddress());
+		loanData.setCustomerCity(loanEnquiry.getCustomerCity());
+		loanData.setCustomerPincode(loanEnquiry.getCustomerPincode());
+		loanData.setEnquiryDateTime(LocalDate.now());
+		
+		repo.save(loanData);
+		return Optional.of(loanData);
 	}
 
 }

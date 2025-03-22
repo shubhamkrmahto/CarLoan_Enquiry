@@ -2,6 +2,7 @@ package com.app.serviceimpl;
 
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -181,4 +182,16 @@ public class EnquiryServiceImpl implements EnquiryService{
 		return Optional.of(loanData);
 	}
 
+	@Override
+	public LoanEnquiry getSingleEnquiry(Integer id) {
+		Optional<LoanEnquiry> byId = enquiryRepository.findById(id);	
+		return byId.get();
+	}
+
+	@Override
+	public List<LoanEnquiry> getAllDataEnquiryOfCustomer() {
+		
+		return	enquiryRepository.findAll();
+
+}
 }

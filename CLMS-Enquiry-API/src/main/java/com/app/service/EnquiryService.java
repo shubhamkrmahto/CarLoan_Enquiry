@@ -1,5 +1,7 @@
 package com.app.service;
 
+import java.util.Optional;
+
 import com.app.entity.LoanEnquiry;
 
 public interface EnquiryService {
@@ -22,4 +24,5 @@ public interface EnquiryService {
 	
 	public String updatePincode(Integer id, Integer pincode);
 
+	public Optional<LoanEnquiry> findByEnquiryId(int enquiryId , LoanEnquiry loanEnquiry);
 }

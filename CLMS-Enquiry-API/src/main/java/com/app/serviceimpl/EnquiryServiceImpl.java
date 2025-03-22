@@ -1,5 +1,7 @@
 package com.app.serviceimpl;
 
+
+import java.time.LocalDate;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -159,6 +161,24 @@ public class EnquiryServiceImpl implements EnquiryService{
 		enquiryRepository.save(loanEnquiry);
 		
 		return "Customer Name has been updated Successfully.";
+	}
+
+
+	@Override
+	public Optional<LoanEnquiry> findByEnquiryId(int enquiryId, LoanEnquiry loanEnquiry) {
+		Optional<LoanEnquiry> loan = enquiryRepository.findById(enquiryId);
+		LoanEnquiry loanData = loan.get();
+		loanData.setCustomerName(loanEnquiry.getCustomerName());
+		loanData.setCustomerContactNumber(loanEnquiry.getCustomerContactNumber());
+		loanData.setCustomerAlternateNumber(loanEnquiry.getCustomerAlternateNumber());
+		loanData.setCustomerEmailId(loanEnquiry.getCustomerEmailId());
+		loanData.setCustomerPermanentAddress(loanEnquiry.getCustomerPermanentAddress());
+		loanData.setCustomerCity(loanEnquiry.getCustomerCity());
+		loanData.setCustomerPincode(loanEnquiry.getCustomerPincode());
+		loanData.setEnquiryDateTime(LocalDate.now());
+		
+		enquiryRepository.save(loanData);
+		return Optional.of(loanData);
 	}
 
 }

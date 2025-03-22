@@ -1,14 +1,16 @@
 package com.app.controller;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,6 +28,7 @@ public class EnquiryController {
 	@DeleteMapping("/deleteEnquiryField/{id}")
 	public ResponseEntity<String> deleteEnquiryField(@PathVariable("id") Integer id)
 	{
+		
 		enquiryService.deleteEnquiryField(id);
 		return new ResponseEntity<String>("Delete Your Enquiry Field Successfully...!",HttpStatus.OK);
 
@@ -34,6 +37,7 @@ public class EnquiryController {
 	
 	@PostMapping("/enquiry")
 	public ResponseEntity<String> saveEnquiry(@RequestBody LoanEnquiry enquiry){
+		
 		
 		String msg = enquiryService.saveEnquiry(enquiry);
 		System.out.println(enquiry);
@@ -44,10 +48,22 @@ public class EnquiryController {
 	@PatchMapping("/updateCustomerName/{id}/{cname}")
 	public ResponseEntity<String> updateCustomerName(@PathVariable("id") Integer id, @PathVariable("cname") String cname)
 	{
-		
 		String msg = enquiryService.updateName(id, cname);
-		
 		return new ResponseEntity<String>(msg, HttpStatus.OK);
+
+			
+	}
+	
+	@PutMapping("/changeEnquiryData/{enquiryId}")
+	public ResponseEntity<Optional<LoanEnquiry>> editData(@PathVariable("enquiryId") int enquiryId, 
+			                                    @RequestBody LoanEnquiry loanEnquiry)
+	{
+		
+
+		Optional<LoanEnquiry> loan=enquiryService.findByEnquiryId(enquiryId,loanEnquiry);
+		return new ResponseEntity<Optional<LoanEnquiry>>(loan, HttpStatus.ACCEPTED);
+
+		
 	}
 	
 	@PatchMapping("/updateContact/{id}/{contact}")
@@ -102,6 +118,7 @@ public class EnquiryController {
 		String msg = enquiryService.updatePincode(id, pincode);
 		
 		return new ResponseEntity<String>(msg, HttpStatus.OK);
+
 	}
 
 }

@@ -2,6 +2,7 @@ package com.app.serviceimpl;
 
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Optional;
 
 import org.slf4j.Logger;
@@ -221,4 +222,20 @@ public class EnquiryServiceImpl implements EnquiryService{
 		
 	}
 
+	@Override
+	public LoanEnquiry getSingleEnquiry(Integer id) {
+		Optional<LoanEnquiry> byId = enquiryRepository.findById(id);	
+		
+		log.info(" GET SINGLE DATA successfully for enquiry id = " + id);
+		return byId.get();
+	}
+
+	@Override
+	public List<LoanEnquiry> getAllDataEnquiryOfCustomer() {
+		
+		log.info(" GET All DATA successfully ");
+		
+		return	enquiryRepository.findAll();
+
+}
 }

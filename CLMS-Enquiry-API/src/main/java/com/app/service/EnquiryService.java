@@ -24,5 +24,5 @@ public interface EnquiryService {
 	
 	public String updatePincode(Integer id, Integer pincode);
 
-	public Optional<LoanEnquiry> findByEnquiryId(int enquiryId , LoanEnquiry loanEnquiry);
+	public String findByEnquiryId(int enquiryId , LoanEnquiry loanEnquiry);
 }

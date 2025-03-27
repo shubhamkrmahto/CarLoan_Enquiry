@@ -50,7 +50,7 @@ public class EnquiryController {
 	@PatchMapping("/updateCustomerName/{id}/{cname}")
 	public ResponseEntity<String> updateCustomerName(@PathVariable("id") Integer id, @PathVariable("cname") String cname)
 	{
-		String msg = enquiryService.updateName(id, cname);
+		String msg = enquiryService.updateFullName(id, cname);
 		return new ResponseEntity<String>(msg, HttpStatus.OK);
 
 			
@@ -95,33 +95,6 @@ public class EnquiryController {
 		return new ResponseEntity<String>(msg, HttpStatus.OK);
 	}
 	
-	@PatchMapping("/updateAddress/{id}/{address}")
-	public ResponseEntity<String> updateCustomerAddress(@PathVariable("id") Integer id, @PathVariable("address") String address)
-	{
-		
-		String msg = enquiryService.updateAddress(id, address);
-		
-		return new ResponseEntity<String>(msg, HttpStatus.OK);
-	}
-	
-	@PatchMapping("/updateCity/{id}/{city}")
-	public ResponseEntity<String> updateCustomerCity(@PathVariable("id") Integer id, @PathVariable("city") String city)
-	{
-		
-		String msg = enquiryService.updateCity(id, city);
-		
-		return new ResponseEntity<String>(msg, HttpStatus.OK);
-	}
-	
-	@PatchMapping("/updatePincode/{id}/{pincode}")
-	public ResponseEntity<String> updateCustomerPincode(@PathVariable("id") Integer id, @PathVariable("pincode") Integer pincode)
-	{
-		
-		String msg = enquiryService.updatePincode(id, pincode);
-		
-		return new ResponseEntity<String>(msg, HttpStatus.OK);
-
-	}
 	@GetMapping("/getSingleEnquiry/{enquiryId}")
 	public ResponseEntity<LoanEnquiry> getSingleEnquiry(@PathVariable("enquiryId") Integer enquiryId)
 	{

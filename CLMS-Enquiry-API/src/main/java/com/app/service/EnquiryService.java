@@ -10,7 +10,7 @@ public interface EnquiryService {
 
 	public void deleteEnquiryField(Integer id);
 	
-	String saveEnquiry(LoanEnquiry enquiry);
+	public String saveEnquiry(LoanEnquiry enquiry);
 	
 	public String updateFullName(Integer id, String cname);
 	
@@ -26,11 +26,11 @@ public interface EnquiryService {
 
 	public String updateAadharNo(Integer id, Long aadharNo);
 	
-	public String updatePanNo(Integer id, Long panNo);
+	public String updatePanNo(Integer id, String panNo);
 	
-	public Optional<LoanEnquiry> findByEnquiryId(int enquiryId , LoanEnquiry loanEnquiry);
+	public String updateEnquiry(Integer enquiryId , LoanEnquiry loanEnquiry);
 
-	public List<LoanEnquiry> getAllDataEnquiryOfCustomer();
+	public List<LoanEnquiry> getAllEnquiry();
 
 	public LoanEnquiry getSingleEnquiry(Integer enquiryId);
 }

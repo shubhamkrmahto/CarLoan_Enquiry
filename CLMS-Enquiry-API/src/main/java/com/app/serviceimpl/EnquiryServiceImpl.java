@@ -64,13 +64,12 @@ public class EnquiryServiceImpl implements EnquiryService{
 				
 	}
 
-
 	@Override
-	public String updateName(Integer id, String cname) {
+	public String updateFullName(Integer id, String cname) {
 		// TODO Auto-generated method stub
 		
 		Optional<LoanEnquiry> CById = enquiryRepository.findById(id);
-		
+		if(CById.isPresent()) {
 		LoanEnquiry loanEnquiry = CById.get();
 		
 		loanEnquiry.setCustomerName(cname);
@@ -80,14 +79,74 @@ public class EnquiryServiceImpl implements EnquiryService{
 
 		log.info("Enquiry Name has been updated successfully , for this id = " + id);
 		return "Customer Name has been updated Successfully.";
+		}
+		return "No valid result found for this id.";
 	}
 
+	
+	@Override
+	public String updateDateOfBirth(Integer id, LocalDate dob) {
+		// TODO Auto-generated method stub
+		
+		Optional<LoanEnquiry> CById = enquiryRepository.findById(id);
+		if(CById.isPresent()) {
+		LoanEnquiry loanEnquiry = CById.get();
+		
+		loanEnquiry.setDateOfBirth(dob);
+		
+		enquiryRepository.save(loanEnquiry);
+		
+		return "Customer Date of Birth has been updated Successfully.";
+		}
+		return "No valid result found for this id.";
+	}
+	
+	@Override
+	public String updateGender(Integer id, String gender) {
+		// TODO Auto-generated method stub
+
+		Optional<LoanEnquiry> CById = enquiryRepository.findById(id);
+		if(CById.isPresent()) {
+		LoanEnquiry loanEnquiry = CById.get();
+		
+		loanEnquiry.setGender(gender);
+		
+		enquiryRepository.save(loanEnquiry);
+		
+		return "Customer Gender has been updated Successfully.";
+		}
+		return "No valid result found for this id.";
+		
+	}
+	
+	@Override
+	public String updateEmail(Integer id, String email) {
+		// TODO Auto-generated method stub
+
+		Optional<LoanEnquiry> CById = enquiryRepository.findById(id);
+		
+		if(CById.isPresent()) {
+		
+		LoanEnquiry loanEnquiry = CById.get();
+		
+		loanEnquiry.setCustomerEmailId(email);
+		
+		enquiryRepository.save(loanEnquiry);
+		
+		log.info("Enquiry Email has been updated successfully , for this id = " + id);
+		
+		return "Customer Email has been updated Successfully.";
+		}
+		return "No valid result found for this id.";
+	}
 
 	@Override
 	public String updateContact(Integer id, Long contact) {
 		// TODO Auto-generated method stub
 
 		Optional<LoanEnquiry> CById = enquiryRepository.findById(id);
+		
+		if(CById.isPresent()) {
 		
 		LoanEnquiry loanEnquiry = CById.get();
 		
@@ -99,6 +158,9 @@ public class EnquiryServiceImpl implements EnquiryService{
 		log.info("Enquiry Contact has been updated successfully , for this id = " + id);
 		
 		return "Customer Contact Number has been updated Successfully.";
+		
+		}
+		return "No valid result found for this id.";
 	}
 
 
@@ -107,6 +169,8 @@ public class EnquiryServiceImpl implements EnquiryService{
 		// TODO Auto-generated method stub
 
 		Optional<LoanEnquiry> CById = enquiryRepository.findById(id);
+		
+		if(CById.isPresent()) {
 		
 		LoanEnquiry loanEnquiry = CById.get();
 		
@@ -118,82 +182,50 @@ public class EnquiryServiceImpl implements EnquiryService{
 		
 		return "Customer Alternate Contact has been updated Successfully.";
 	}
+		return "No valid result found for this id.";
+	}
 
-
+	
 	@Override
-	public String updateEmail(Integer id, String email) {
+	public String updateAadharNo(Integer id, Long aadharNo) {
 		// TODO Auto-generated method stub
 
 		Optional<LoanEnquiry> CById = enquiryRepository.findById(id);
 		
+		if(CById.isPresent()) {
+		
 		LoanEnquiry loanEnquiry = CById.get();
 		
-		loanEnquiry.setCustomerEmailId(email);
+		loanEnquiry.setAadharNo(aadharNo);
 		
 		enquiryRepository.save(loanEnquiry);
 		
-		log.info("Enquiry Email has been updated successfully , for this id = " + id);
-		
-		return "Customer Email has been updated Successfully.";
+		return "Customer Aadhar No has been updated Successfully.";
+		}
+		return "No valid result found for this id.";
 	}
 
 
 	@Override
-	public String updateAddress(Integer id, String address) {
+	public String updatePanNo(Integer id, String panNo) {
 		// TODO Auto-generated method stub
 
 		Optional<LoanEnquiry> CById = enquiryRepository.findById(id);
 		
-		LoanEnquiry loanEnquiry = CById.get();
-		
-		loanEnquiry.setCustomerPermanentAddress(address);
-		
-		enquiryRepository.save(loanEnquiry);
-		
-		log.info("Enquiry Address has been updated successfully , for this id = " + id);
-		
-		return "Customer permanent address has been updated Successfully.";
-	}
-
-
-	@Override
-	public String updateCity(Integer id, String city) {
-		// TODO Auto-generated method stub
-
-		Optional<LoanEnquiry> CById = enquiryRepository.findById(id);
+		if(CById.isPresent()) {
 		
 		LoanEnquiry loanEnquiry = CById.get();
 		
-		loanEnquiry.setCustomerCity(city);
+		loanEnquiry.setPanCardNo(panNo);
 		
 		enquiryRepository.save(loanEnquiry);
 		
-		log.info("Enquiry City has been updated successfully , for this id = " + id);
-		
-		return "Customer City has been updated Successfully.";
+		return "Customer PanCard No No has been updated Successfully.";
+		}
+		return "No valid result found for this id.";
 	}
 
-
-	@Override
-	public String updatePincode(Integer id, Integer pincode) {
-		// TODO Auto-generated method stub
-
-		Optional<LoanEnquiry> CById = enquiryRepository.findById(id);
-		
-		LoanEnquiry loanEnquiry = CById.get();
-		
-		loanEnquiry.setCustomerPincode(pincode);
-		
-		enquiryRepository.save(loanEnquiry);
-		
-		log.info("Enquiry pincode has been updated successfully , for this id = " + id);
-		
-		return "Customer Name has been updated Successfully.";
-	}
-
-
-	@Override
-	public String findByEnquiryId(int enquiryId, LoanEnquiry loanEnquiry) {
+	public String updateEnquiry(Integer enquiryId, LoanEnquiry loanEnquiry) {
 		
 		Optional<LoanEnquiry> loan = enquiryRepository.findById(enquiryId);
 		
@@ -203,14 +235,13 @@ public class EnquiryServiceImpl implements EnquiryService{
 		{
 			
 			loanData.setCustomerName(loanEnquiry.getCustomerName());
+			loanData.setDateOfBirth(loanEnquiry.getDateOfBirth());
+			loanData.setGender(loanEnquiry.getGender());
+			loanData.setCustomerEmailId(loanEnquiry.getCustomerEmailId());
 			loanData.setCustomerContactNumber(loanEnquiry.getCustomerContactNumber());
 			loanData.setCustomerAlternateNumber(loanEnquiry.getCustomerAlternateNumber());
-			loanData.setCustomerEmailId(loanEnquiry.getCustomerEmailId());
-			loanData.setCustomerPermanentAddress(loanEnquiry.getCustomerPermanentAddress());
-			loanData.setCustomerCity(loanEnquiry.getCustomerCity());
-			loanData.setCustomerPincode(loanEnquiry.getCustomerPincode());
-			loanData.setEnquiryDateTime(LocalDate.now());
-			
+			loanData.setAadharNo(loanEnquiry.getAadharNo());
+			loanData.setPanCardNo(loanEnquiry.getPanCardNo());
 			
 			enquiryRepository.save(loanData);
 
@@ -231,11 +262,12 @@ public class EnquiryServiceImpl implements EnquiryService{
 	}
 
 	@Override
-	public List<LoanEnquiry> getAllDataEnquiryOfCustomer() {
+	public List<LoanEnquiry> getAllEnquiry() {
 		
 		log.info(" GET All DATA successfully ");
 		
 		return	enquiryRepository.findAll();
 
-}
+	}
+
 }

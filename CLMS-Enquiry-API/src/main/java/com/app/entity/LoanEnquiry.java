@@ -8,6 +8,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -31,6 +32,9 @@ public class LoanEnquiry {
 	private Long customerAlternateNumber;
 	private Long aadharNo;
 	private String panCardNo;
+	private String enquiryStatus;
+	@OneToOne
+	private Cibil cibil;
 	
 	@CreationTimestamp
 	private LocalDate enquiryDateTime;

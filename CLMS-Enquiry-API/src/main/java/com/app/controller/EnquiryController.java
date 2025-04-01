@@ -1,4 +1,4 @@
-package com.app.controller;
+ package com.app.controller;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -38,6 +38,25 @@ public class EnquiryController {
 		String msg = enquiryService.saveEnquiry(enquiry);
 		
 		return new  ResponseEntity<String>(msg , HttpStatus.OK);			
+	}
+	
+	
+	//method to change enquiry status from crm
+	@GetMapping("/enquirystatus/{id}")
+	public ResponseEntity<String> sendEnquiryStatusToOE(@PathVariable Integer id){
+		
+		String status =enquiryService.setenquiryStatus(id);
+		return new ResponseEntity<String>(status, HttpStatus.OK);
+		
+	}
+	
+	//method to get all enquries having status sentToOE
+	
+	@GetMapping("/enquirysenttooe")
+	public ResponseEntity<List<LoanEnquiry>> getEnquirySentToOE(){
+		List<LoanEnquiry> list =enquiryService.getEnquirySentToOE();
+		System.out.println(list);
+		return new ResponseEntity<List<LoanEnquiry>>(list , HttpStatus.OK);
 	}
 	
 	

@@ -33,4 +33,8 @@ public interface EnquiryService {
 	public List<LoanEnquiry> getAllEnquiry();
 
 	public LoanEnquiry getSingleEnquiry(Integer enquiryId);
+
+	public String setenquiryStatus(Integer id);
+
+	public List<LoanEnquiry> getEnquirySentToOE();
 }

@@ -270,4 +270,23 @@ public class EnquiryServiceImpl implements EnquiryService{
 
 	}
 
+
+	@Override
+	public String setenquiryStatus(Integer id) {
+		Optional<LoanEnquiry> byId = enquiryRepository.findById(id);
+		if (byId.isPresent()) {
+			LoanEnquiry loanEnquiry = byId.get();
+			loanEnquiry.setEnquiryStatus("SentToOE");	
+			enquiryRepository.save(loanEnquiry);
+		}
+		return "status changed to Sent To OE";
+	}
+
+
+	@Override
+	public List<LoanEnquiry> getEnquirySentToOE() {
+	List<LoanEnquiry> list = enquiryRepository.findByEnquiryStatus("SentToOE");
+		return list;
+	}
+
 }

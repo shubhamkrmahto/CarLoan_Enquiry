@@ -34,6 +34,17 @@ public class LoanEnquiry {
 	private LocalDate enquiryDateTime;
 
 	
+//	"customerName":"Priya",
+//	"customerContactNumber":77777777,
+//	"customerAlternateNumber":23456789,
+//	"customerEmailId":"priya@gmail.com",
+//	"customerPermanentAddress":"pune",
+//	"customerCity":"Pune",
+//	"customerPincode":777
+	
+	
+	
+	
 
 	
 }

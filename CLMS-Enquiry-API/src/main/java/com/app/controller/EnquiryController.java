@@ -30,20 +30,15 @@ public class EnquiryController {
 	@DeleteMapping("/deleteEnquiryField/{id}")
 	public ResponseEntity<String> deleteEnquiryField(@PathVariable("id") Integer id)
 	{
-		
 		enquiryService.deleteEnquiryField(id);
 		return new ResponseEntity<String>("Delete Your Enquiry Field Successfully...!",HttpStatus.OK);
-
 	}
 		
-	
 	@PostMapping("/enquiry")
 	public ResponseEntity<String> saveEnquiry(@RequestBody LoanEnquiry enquiry){
 		
-		
 		String msg = enquiryService.saveEnquiry(enquiry);
 		System.out.println(enquiry);
-		
 		return new  ResponseEntity<String>(msg , HttpStatus.OK);			
 	}
 	
@@ -51,9 +46,7 @@ public class EnquiryController {
 	public ResponseEntity<String> updateCustomerName(@PathVariable("id") Integer id, @PathVariable("cname") String cname)
 	{
 		String msg = enquiryService.updateName(id, cname);
-		return new ResponseEntity<String>(msg, HttpStatus.OK);
-
-			
+		return new ResponseEntity<String>(msg, HttpStatus.OK);	
 	}
 	
 	@PutMapping("/changeEnquiryData/{enquiryId}")
@@ -136,9 +129,5 @@ public class EnquiryController {
 		    
 	        return new ResponseEntity<List<LoanEnquiry>>(loanEnquiry,HttpStatus.OK);
 	}
-
-
-	
-
 }
  

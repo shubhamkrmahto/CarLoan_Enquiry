@@ -1,4 +1,4 @@
-package com.app.entity;
+ package com.app.entity;
 
 import java.time.LocalDate;
 
@@ -12,7 +12,6 @@ import jakarta.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 
 @NoArgsConstructor
